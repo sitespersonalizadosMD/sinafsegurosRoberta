@@ -148,7 +148,29 @@ html, body {
 body {
   padding-bottom: 80px;
 }
+/* CARROSSEL */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+}
 
+.carousel img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.carousel img.active {
+  opacity: 1;
+}
 </style>
 </head>
 
@@ -350,6 +372,31 @@ body {
   </div>
 </div>
 
+  <!-- CLIENTES -->
+<div style="margin-top:25px; text-align:center;">
+  <h3 style="color:#ffd700; margin-bottom:10px;">
+    Clientes que já garantiram sua proteção 💙
+  </h3>
+
+  <div class="carousel">
+    <img src="cliente1.jpeg" class="active">
+    <img src="cliente10.jpeg">
+    <img src="cliente11.jpeg">
+    <img src="cliente12.jpeg">
+    <img src="cliente13.jpeg">
+    <img src="cliente14.jpeg">
+    <img src="cliente15.jpeg">
+    <img src="cliente2.jpeg">
+    <img src="cliente3.jpeg">
+    <img src="cliente4.jpeg">
+    <img src="cliente5.jpeg">
+    <img src="cliente6.jpeg">
+    <img src="cliente7.jpeg">
+    <img src="cliente8.jpeg">
+    <img src="cliente9.jpeg">
+  </div>
+</div>
+
   <!-- CTA FINAL -->
   <div class="cta">
     <img src="sinaf-seguros (1).png">
@@ -368,7 +415,18 @@ function togglePlano(id) {
   const el = document.getElementById(id);
   el.style.display = el.style.display === "none" ? "block" : "none";
 }
+  
 </script>
+<script>
+let index = 0;
+const images = document.querySelectorAll('.carousel img');
 
+setInterval(() => {
+  images[index].classList.remove('active');
+  index = (index + 1) % images.length;
+  images[index].classList.add('active');
+}, 3000);
+</script>
+  
 </body>
 </html>

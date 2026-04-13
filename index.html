@@ -394,6 +394,56 @@ background: #000;
   </div>
 </div>
 
+  <!-- FORMULÁRIO -->
+<div style="margin-top:30px; background:#112a5c; padding:20px; border-radius:10px;">
+
+  <h3 style="color:#ffd700; text-align:center; margin-bottom:15px;">
+    Gostaria de adquirir qual plano?
+  </h3>
+
+  <select id="plano" style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
+    <option value="">Selecione um plano</option>
+    <option>Plano Especial</option>
+    <option>Plano Superior</option>
+    <option>Plano Luxo</option>
+  </select>
+
+  <h3 style="color:#ffd700; margin:10px 0;">Terá dependentes?</h3>
+
+  <select id="dependentes" onchange="toggleDependentes()" style="width:100%; padding:10px; border-radius:6px;">
+    <option value="">Selecione</option>
+    <option value="Não">Não</option>
+    <option value="Sim">Sim</option>
+  </select>
+
+  <div id="boxDependentes" style="display:none; margin-top:10px;">
+    <label>Quem são os dependentes?</label>
+    <select id="parentesco" style="width:100%; padding:10px; border-radius:6px;">
+      <option>Esposa(o)</option>
+      <option>Filho(a)</option>
+      <option>Pai</option>
+      <option>Mãe</option>
+      <option>Irmão(ã)</option>
+      <option>Sogro(a)</option>
+      <option>Outro</option>
+    </select>
+  </div>
+
+  <h3 style="color:#ffd700; margin:10px 0;">Qual sua renda mensal?</h3>
+
+  <select id="renda" style="width:100%; padding:10px; border-radius:6px;">
+    <option value="">Selecione</option>
+    <option>Até R$1.500</option>
+    <option>R$1.500 a R$3.000</option>
+    <option>R$3.000 a R$5.000</option>
+    <option>Acima de R$5.000</option>
+  </select>
+
+  <a class="btn" onclick="enviarWhatsApp()">
+    Finalizar no WhatsApp
+  </a>
+
+</div>
   <div class="cta">
     <img src="sinaf-seguros (1).png">
     <h2>Fale comigo agora!</h2>
@@ -433,6 +483,37 @@ setInterval(() => {
   index = (index + 1) % images.length;
   images[index].classList.add('active');
 }, 3000);
+</script>
+
+  <script>
+function toggleDependentes() {
+  const value = document.getElementById("dependentes").value;
+  const box = document.getElementById("boxDependentes");
+
+  box.style.display = value === "Sim" ? "block" : "none";
+}
+
+function enviarWhatsApp() {
+  const plano = document.getElementById("plano").value;
+  const dependentes = document.getElementById("dependentes").value;
+  const parentesco = document.getElementById("parentesco").value;
+  const renda = document.getElementById("renda").value;
+
+  let mensagem = `Olá Roberta! Quero contratar um plano.%0A%0A`;
+
+  mensagem += `Plano escolhido: ${plano || "Não informado"}%0A`;
+  mensagem += `Possui dependentes: ${dependentes || "Não informado"}%0A`;
+
+  if (dependentes === "Sim") {
+    mensagem += `Dependentes: ${parentesco}%0A`;
+  }
+
+  mensagem += `Renda mensal: ${renda || "Não informado"}`;
+
+  const telefone = "5521982323081";
+
+  window.open(`https://wa.me/${telefone}?text=${mensagem}`, "_blank");
+}
 </script>
   
 </body>

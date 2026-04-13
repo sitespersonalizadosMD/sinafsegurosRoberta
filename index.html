@@ -508,8 +508,17 @@ function toggleDependentes() {
 function enviarWhatsApp() {
   const plano = document.getElementById("plano").value;
   const dependentes = document.getElementById("dependentes").value;
-  const parentesco = document.getElementById("parentesco").value;
   const renda = document.getElementById("renda").value;
+
+  // Pega TODOS os dependentes
+  const selects = document.querySelectorAll('.dependente');
+
+  let parentescos = [];
+  selects.forEach(select => {
+    if (select.value) {
+      parentescos.push(select.value);
+    }
+  });
 
   let mensagem = `Olá Roberta! Quero contratar um plano.%0A%0A`;
 
@@ -517,7 +526,7 @@ function enviarWhatsApp() {
   mensagem += `Possui dependentes: ${dependentes || "Não informado"}%0A`;
 
   if (dependentes === "Sim") {
-    mensagem += `Dependentes: ${parentesco}%0A`;
+    mensagem += `Dependentes: ${parentescos.join(", ") || "Não informado"}%0A`;
   }
 
   mensagem += `Renda mensal: ${renda || "Não informado"}`;
@@ -527,5 +536,28 @@ function enviarWhatsApp() {
   window.open(`https://wa.me/${telefone}?text=${mensagem}`, "_blank");
 }
 </script>
+
+  function adicionarDependente() {
+  const container = document.getElementById("listaDependentes");
+
+  const novo = document.createElement("select");
+  novo.classList.add("dependente");
+  novo.style = "width:100%; padding:10px; border-radius:6px; margin-top:10px;";
+
+  novo.innerHTML = `
+    <option value="">Selecione</option>
+    <option>Esposa(o)</option>
+    <option>Filho(a)</option>
+    <option>Pai</option>
+    <option>Mãe</option>
+    <option>Irmão(ã)</option>
+    <option>Sogro(a)</option>
+    <option>Avô/Avó</option>
+    <option>Neto(a)</option>
+    <option>Outro</option>
+  `;
+
+  container.appendChild(novo);
+}
 </body>
 </html>

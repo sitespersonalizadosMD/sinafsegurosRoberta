@@ -494,6 +494,17 @@ setInterval(() => {
   images[index].classList.add('active');
 }, 3000);
 <script>
+let index = 0;
+const images = document.querySelectorAll('.carousel img');
+
+setInterval(() => {
+  images[index].classList.remove('active');
+  index = (index + 1) % images.length;
+  images[index].classList.add('active');
+}, 3000);
+</script>
+
+<script>
 function toggleDependentes() {
   const value = document.getElementById("dependentes").value;
   const box = document.getElementById("boxDependentes");

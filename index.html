@@ -493,7 +493,7 @@ setInterval(() => {
   index = (index + 1) % images.length;
   images[index].classList.add('active');
 }, 3000);
-</script>
+<script>
 function toggleDependentes() {
   const value = document.getElementById("dependentes").value;
   const box = document.getElementById("boxDependentes");
@@ -506,8 +506,9 @@ function enviarWhatsApp() {
   const dependentes = document.getElementById("dependentes").value;
   const checkboxes = document.querySelectorAll('#boxDependentes input[type="checkbox"]:checked');
 
-let parentescos = [];
-checkboxes.forEach(cb => parentescos.push(cb.value));
+  let parentescos = [];
+  checkboxes.forEach(cb => parentescos.push(cb.value));
+
   const renda = document.getElementById("renda").value;
 
   let mensagem = `Olá Roberta! Quero contratar um plano.%0A%0A`;

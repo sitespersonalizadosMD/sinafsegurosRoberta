@@ -491,8 +491,15 @@ setInterval(() => {
   index = (index + 1) % images.length;
   images[index].classList.add('active');
 }, 3000);
-</script>
+<script>
+function toggleDependentes() {
+  const value = document.getElementById("dependentes").value;
+  const box = document.getElementById("boxDependentes");
 
+  box.style.display = value === "Sim" ? "block" : "none";
+}
+
+function enviarWhatsApp() {
   const plano = document.getElementById("plano").value;
   const dependentes = document.getElementById("dependentes").value;
   const parentesco = document.getElementById("parentesco").value;

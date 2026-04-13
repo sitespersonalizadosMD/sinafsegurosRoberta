@@ -400,6 +400,10 @@ background: #000;
   </h3>
 
   <select id="plano" style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
+    <h3 style="color:#ffd700; margin:10px 0;">Qual sua idade?</h3>
+
+<input type="number" id="idadeTitular" placeholder="Digite sua idade"
+  style="width:100%; padding:10px; border-radius:6px; margin-bottom:10px;">
     <option value="">Selecione um plano</option>
     <option>Plano Especial</option>
     <option>Plano Superior</option>
@@ -495,9 +499,12 @@ function enviarWhatsApp() {
   const dependentesList = document.querySelectorAll("#listaDependentes div");
   const renda = document.getElementById("renda").value;
 
+  const idadeTitular = document.getElementById("idadeTitular").value;
+
   let mensagem = `Olá Roberta! Quero contratar um plano.%0A%0A`;
 
   mensagem += `Plano escolhido: ${plano || "Não informado"}%0A`;
+  mensagem += `Idade do titular: ${idadeTitular || "Não informado"}%0A`;
   mensagem += `Possui dependentes: ${dependentes || "Não informado"}%0A`;
 
  if (dependentes === "Sim" && dependentesList.length > 0) {

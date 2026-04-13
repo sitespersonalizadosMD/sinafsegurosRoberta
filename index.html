@@ -469,6 +469,22 @@ setInterval(() => {
   images[index].classList.add('active');
 }, 3000);
 </script>
+
+  <script>
+function finalizarPlano() {
+  const planoSelecionado = document.querySelector('input[name="plano"]:checked');
+
+  if (!planoSelecionado) {
+    alert("Por favor, selecione um plano.");
+    return;
+  }
+
+  const mensagem = `Olá Roberta, quero contratar o ${planoSelecionado.value}`;
+  const url = `https://wa.me/5521982323081?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url, "_blank");
+}
+</script>
   
 </body>
 </html>
